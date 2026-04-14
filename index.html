@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SignalShield AI Ltd | Securing the Integrity of Digital Advertising</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;600&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+
+/* ============================================================
+   RESET & ROOT  — SignalShield AI dark navy / electric blue palette
+============================================================ */
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
+
+:root{
+  --blue:#00AAFF;
+  --blue-dim:#0088DD;
+  --blue-dark:#005FAA;
+  --deep:#04090F;
+  --deep-mid:#060E1C;
+  --gold:#F59E0B;
+  --gold-dark:#D97706;
+  --white:#FFFFFF;
+  --off-white:#EDF4FA;
+  --text-dark:#04090F;
+  --text-muted:#3A5070;
+  --card-bg:rgba(0,170,255,0.04);
+  --card-border:rgba(0,170,255,0.18);
+}
+
+html{font-family:'Source Sans 3',sans-serif;}
+
+::-webkit-scrollbar{width:6px;}
+::-webkit-scrollbar-track{background:#04090F;}
+::-webkit-scrollbar-thumb{background:#00AAFF;border-radius:3px;}
+
+/* ============================================================
+   NAVBAR
+============================================================ */
+.navbar{
+  width:100%;background:rgba(4,9,15,0.97);
+  padding:14px 8%;position:fixed;top:0;left:0;
+  z-index:1000;border-bottom:1px solid rgba(0,170,255,0.18);
+  backdrop-filter:blur(12px);
+}
+.nav-container{
+  max-width:1200px;margin:auto;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.logo{
+  font-family:'Rajdhani',sans-serif;font-size:22px;font-weight:700;
+  color:var(--blue);letter-spacing:2px;
+  display:flex;align-items:center;gap:10px;text-decoration:none;
+}
+.logo-icon{
+  width:36px;height:36px;
+  background:linear-gradient(135deg,var(--blue),var(--blue-dark));
+  border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.logo-icon svg{width:22px;height:22px;}
+.logo span{color:var(--white);font-weight:400;}
+
+#navMenu{display:flex;gap:32px;align-items:center;}
+#navMenu a{
+  text-decoration:none;color:rgba(0,170,255,0.8);
+  font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+  position:relative;transition:color 0.3s;font-family:'IBM Plex Mono',monospace;
+}
+#navMenu a::after{
+  content:"";position:absolute;left:0;bottom:-4px;
+  width:0;height:1px;background:var(--blue);transition:0.3s;
+}
+#navMenu a:hover{color:var(--blue);}
+#navMenu a:hover::after{width:100%;}
+.menu-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+.menu-toggle span{width:24px;height:2px;background:var(--blue);display:block;transition:0.3s;}
+
+@media(max-width:900px){
+  #navMenu{
+    position:absolute;top:64px;left:0;width:100%;
+    background:rgba(4,9,15,0.98);flex-direction:column;padding:28px 0;gap:20px;display:none;
+    border-bottom:1px solid rgba(0,170,255,0.18);
+  }
+  #navMenu.active{display:flex;}
+  .menu-toggle{display:flex;}
+}
+
+/* ============================================================
+   HERO
+============================================================ */
+.hero-section{
+  position:relative;padding:150px 8% 100px;background:var(--deep);
+  overflow:hidden;min-height:100vh;display:flex;align-items:center;
+}
+.hero-section::before{
+  content:"";position:absolute;top:0;right:0;width:280px;height:280px;
+  background:var(--blue);opacity:0.07;clip-path:polygon(100% 0,0 0,100% 100%);
+}
+.hero-section::after{
+  content:"";position:absolute;bottom:0;left:0;width:300px;height:300px;
+  background:var(--gold);opacity:0.06;clip-path:polygon(0 100%,0 0,100% 100%);
+}
+.hero-glow{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:700px;height:700px;
+  background:radial-gradient(circle,rgba(0,170,255,0.06) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:linear-gradient(rgba(0,170,255,0.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,170,255,0.04) 1px,transparent 1px);
+  background-size:60px 60px;pointer-events:none;
+}
+.hero-container{
+  max-width:1200px;margin:auto;
+  display:grid;grid-template-columns:1.1fr 0.9fr;
+  gap:70px;align-items:center;position:relative;z-index:2;width:100%;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(0,170,255,0.08);border:1px solid rgba(0,170,255,0.3);
+  color:var(--blue);font-size:11px;font-weight:700;letter-spacing:3px;
+  padding:6px 16px;border-radius:3px;text-transform:uppercase;
+  margin-bottom:20px;font-family:'IBM Plex Mono',monospace;
+}
+.hero-badge::before{
+  content:"";width:6px;height:6px;border-radius:50%;background:var(--blue);
+  animation:pulse-dot 1.5s ease-in-out infinite;
+}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.4;transform:scale(0.6);}}
+.hero-left h1{
+  font-family:'Rajdhani',sans-serif;font-size:54px;line-height:1.12;
+  color:var(--blue);margin-bottom:8px;letter-spacing:1px;
+}
+.hero-left h1 span{color:var(--white);}
+.hero-divider{
+  width:70px;height:2px;background:linear-gradient(90deg,var(--blue),transparent);
+  margin:18px 0 24px;
+}
+.hero-text{color:#7AAAC8;font-size:17px;line-height:1.85;margin-bottom:35px;max-width:520px;}
+.hero-buttons{display:flex;gap:16px;flex-wrap:wrap;}
+.btn-blue{
+  background:linear-gradient(135deg,var(--blue),var(--blue-dark));
+  color:var(--deep);padding:14px 32px;border-radius:4px;
+  text-decoration:none;font-weight:700;font-size:13px;letter-spacing:1px;text-transform:uppercase;
+  transition:0.3s;box-shadow:0 4px 20px rgba(0,170,255,0.25);font-family:'IBM Plex Mono',monospace;
+}
+.btn-blue:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,170,255,0.4);}
+.btn-outline-blue{
+  border:1px solid var(--blue);color:var(--blue);padding:14px 32px;border-radius:4px;
+  text-decoration:none;font-weight:700;font-size:13px;letter-spacing:1px;text-transform:uppercase;
+  transition:0.3s;font-family:'IBM Plex Mono',monospace;
+}
+.btn-outline-blue:hover{background:rgba(0,170,255,0.08);}
+.hero-right{position:relative;}
+.hero-card{
+  background:rgba(0,170,255,0.04);border:1px solid rgba(0,170,255,0.18);
+  border-radius:12px;padding:35px;backdrop-filter:blur(8px);position:relative;overflow:hidden;
+}
+.hero-card::before{
+  content:"";position:absolute;top:0;left:0;right:0;
+  height:2px;background:linear-gradient(90deg,var(--blue),var(--gold));
+}
+.hero-card-title{
+  font-family:'IBM Plex Mono',monospace;color:var(--blue);
+  font-size:11px;letter-spacing:3px;text-transform:uppercase;margin-bottom:20px;
+}
+.hero-stat{
+  display:flex;align-items:center;gap:14px;
+  padding:14px 0;border-bottom:1px solid rgba(0,170,255,0.08);
+}
+.hero-stat:last-child{border-bottom:none;}
+.stat-dot{width:8px;height:8px;border-radius:50%;background:var(--blue);flex-shrink:0;}
+.stat-dot.gold{background:var(--gold);}
+.stat-label{color:#7AAAC8;font-size:14px;flex:1;}
+.stat-val{color:var(--blue);font-weight:700;font-size:16px;font-family:'Rajdhani',sans-serif;letter-spacing:1px;}
+
+@media(max-width:900px){
+  .hero-section{padding:120px 6% 80px;min-height:auto;}
+  .hero-container{grid-template-columns:1fr;gap:50px;text-align:center;}
+  .hero-left h1{font-size:32px;}
+  .hero-divider{margin:16px auto 22px;}
+  .hero-text{font-size:15px;margin:0 auto 28px;max-width:95%;}
+  .hero-buttons{justify-content:center;}
+  .btn-blue,.btn-outline-blue{padding:13px 24px;font-size:12px;}
+}
+
+/* ============================================================
+   ABOUT
+============================================================ */
+.about-section{padding:130px 8%;background:var(--deep-mid);position:relative;overflow:hidden;}
+.about-section::before{
+  content:"";position:absolute;top:0;right:0;width:250px;height:250px;
+  background:var(--gold);opacity:0.05;clip-path:polygon(100% 0,0 0,100% 100%);
+}
+.about-section::after{
+  content:"";position:absolute;bottom:0;left:0;width:250px;height:250px;
+  background:var(--blue);opacity:0.04;clip-path:polygon(0 100%,0 0,100% 100%);
+}
+.about-container{
+  max-width:1100px;margin:auto;display:grid;grid-template-columns:1.3fr 1fr;
+  gap:80px;align-items:center;position:relative;z-index:2;
+}
+.section-label{
+  display:inline-block;color:var(--blue);font-size:11px;font-weight:700;
+  letter-spacing:4px;text-transform:uppercase;margin-bottom:14px;font-family:'IBM Plex Mono',monospace;
+}
+.section-title{
+  font-family:'Rajdhani',sans-serif;font-size:40px;color:var(--blue);
+  line-height:1.2;margin-bottom:8px;letter-spacing:1px;
+}
+.section-divider{
+  width:70px;height:2px;background:linear-gradient(90deg,var(--blue),transparent);margin:14px 0 26px;
+}
+.about-left p{color:#7AAAC8;line-height:1.85;margin-bottom:20px;font-size:16px;max-width:520px;}
+.about-features{margin-top:28px;display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+.feature-tag{
+  background:rgba(0,170,255,0.06);border:1px solid rgba(0,170,255,0.18);
+  color:rgba(0,170,255,0.9);padding:10px 16px;border-radius:5px;
+  font-size:12px;font-weight:700;letter-spacing:0.5px;font-family:'IBM Plex Mono',monospace;
+}
+.founder-box{
+  background:rgba(0,170,255,0.04);border:1px solid rgba(0,170,255,0.18);
+  padding:38px;border-radius:12px;position:relative;
+}
+.founder-box::before{
+  content:'"';position:absolute;top:-20px;left:28px;
+  font-size:80px;color:var(--blue);opacity:0.12;font-family:'Rajdhani',sans-serif;line-height:1;
+}
+.founder-box::after{
+  content:"";position:absolute;top:0;left:0;right:0;
+  height:2px;background:linear-gradient(90deg,var(--blue),transparent);border-radius:12px 12px 0 0;
+}
+.founder-box-title{
+  font-family:'Rajdhani',sans-serif;color:var(--blue);
+  font-size:13px;letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;
+}
+.founder-box-div{width:50px;height:2px;background:var(--blue);margin-bottom:18px;}
+.founder-box p{color:#7AAAC8;line-height:1.8;margin-bottom:16px;font-size:15px;}
+.founder-box p strong{color:rgba(0,170,255,0.9);}
+.founder-box-sub{
+  background:rgba(0,170,255,0.04);border:1px solid rgba(0,170,255,0.12);
+  border-radius:8px;padding:20px;margin-top:20px;
+}
+.founder-box-sub .founder-box-title{font-size:11px;margin-bottom:6px;}
+.linkedin-btn{
+  display:inline-block;padding:10px 22px;background:var(--blue);color:var(--deep);
+  text-decoration:none;border-radius:4px;font-weight:700;font-size:12px;
+  letter-spacing:1px;text-transform:uppercase;margin-top:4px;transition:0.3s;
+  font-family:'IBM Plex Mono',monospace;
+}
+.linkedin-btn:hover{background:#33BBFF;}
+
+@media(max-width:900px){
+  .about-section{padding:90px 6%;}
+  .about-container{grid-template-columns:1fr;gap:50px;text-align:center;}
+  .section-divider{margin:14px auto 24px;}
+  .about-left p{margin:0 auto 18px;max-width:95%;}
+  .about-features{grid-template-columns:1fr;max-width:300px;margin:20px auto 0;}
+  .feature-tag{text-align:center;}
+  .founder-box{text-align:center;}
+  .founder-box-div{margin:8px auto 18px;}
+}
+
+/* ============================================================
+   PROCESS
+============================================================ */
+.process-section{padding:130px 8%;background:var(--off-white);position:relative;overflow:hidden;}
+.process-section::before{
+  content:"";position:absolute;top:0;right:0;width:250px;height:250px;
+  background:var(--blue);opacity:0.07;clip-path:polygon(100% 0,0 0,100% 100%);
+}
+.process-section::after{
+  content:"";position:absolute;bottom:0;left:0;width:260px;height:260px;
+  background:var(--deep);opacity:0.07;clip-path:polygon(0 100%,0 0,100% 100%);
+}
+.process-container{max-width:1200px;margin:auto;text-align:center;position:relative;z-index:2;}
+.process-container .section-title{color:var(--text-dark);}
+.process-container .section-label{color:var(--gold-dark);}
+.process-container .section-divider{margin:14px auto 26px;background:linear-gradient(90deg,var(--blue-dim),transparent);}
+.process-sub{max-width:660px;margin:0 auto 60px;color:#4A6070;line-height:1.8;font-size:16px;}
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;}
+.process-card{
+  background:var(--white);padding:28px 22px;border-radius:10px;
+  border:1px solid #C0D8E8;border-top:4px solid var(--blue);
+  text-align:left;transition:0.35s;box-shadow:0 4px 20px rgba(0,0,0,0.04);
+}
+.process-card:hover{
+  transform:translateY(-8px);box-shadow:0 20px 40px rgba(0,170,255,0.12);border-top-color:var(--gold);
+}
+.process-card-img{
+  width:100%;height:140px;object-fit:cover;background:var(--deep);
+  border-radius:7px;margin-bottom:16px;display:block;
+}
+.step-badge{
+  display:inline-block;background:var(--blue);color:var(--deep);
+  font-size:11px;font-weight:700;padding:5px 14px;border-radius:3px;
+  letter-spacing:1px;margin-bottom:12px;font-family:'IBM Plex Mono',monospace;
+}
+.process-card h3{
+  font-family:'Rajdhani',sans-serif;margin-bottom:10px;
+  color:var(--text-dark);font-size:18px;letter-spacing:0.5px;
+}
+.process-card p{color:#4A6070;font-size:14px;line-height:1.65;}
+
+@media(max-width:1000px){.process-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:600px){
+  .process-section{padding:80px 6%;}
+  .process-container .section-title{font-size:26px;}
+  .process-sub{font-size:14px;margin-bottom:40px;}
+  .process-grid{grid-template-columns:1fr;}
+}
+
+/* ============================================================
+   PLATFORM
+============================================================ */
+.platform-section{padding:130px 8%;background:var(--deep);position:relative;overflow:hidden;}
+.platform-section::before{
+  content:"";position:absolute;top:0;right:0;width:250px;height:250px;
+  background:var(--blue);opacity:0.06;clip-path:polygon(100% 0,0 0,100% 100%);
+}
+.platform-section::after{
+  content:"";position:absolute;bottom:0;left:0;width:260px;height:260px;
+  background:var(--gold);opacity:0.05;clip-path:polygon(0 100%,0 0,100% 100%);
+}
+.platform-container{max-width:1200px;margin:auto;text-align:center;position:relative;z-index:2;}
+.platform-container .section-title{color:var(--blue);}
+.platform-container .section-label{color:var(--gold);}
+.platform-container .section-divider{margin:14px auto 26px;background:linear-gradient(90deg,var(--blue),transparent);}
+.platform-sub{max-width:660px;margin:0 auto 60px;color:#7AAAC8;line-height:1.8;font-size:16px;}
+.platform-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+.platform-card{
+  background:var(--card-bg);border:1px solid var(--card-border);
+  padding:30px 25px;border-radius:10px;text-align:left;transition:0.35s;position:relative;overflow:hidden;
+}
+.platform-card::before{
+  content:"";position:absolute;top:0;left:0;right:0;
+  height:2px;background:linear-gradient(90deg,var(--blue),var(--gold));
+  transform:scaleX(0);transform-origin:left;transition:0.4s;
+}
+.platform-card:hover{
+  transform:translateY(-8px);box-shadow:0 20px 40px rgba(0,0,0,0.4);
+  border-color:rgba(0,170,255,0.35);
+}
+.platform-card:hover::before{transform:scaleX(1);}
+.platform-card-img{
+  width:100%;height:140px;object-fit:cover;
+  border-radius:7px;margin-bottom:18px;display:block;
+}
+.platform-badge{
+  display:inline-block;background:rgba(0,170,255,0.1);border:1px solid rgba(0,170,255,0.25);
+  color:var(--blue);font-size:10px;font-weight:700;padding:4px 12px;border-radius:3px;
+  letter-spacing:1.5px;margin-bottom:12px;font-family:'IBM Plex Mono',monospace;
+}
+.platform-card h3{
+  font-family:'Rajdhani',sans-serif;color:var(--blue);font-size:18px;
+  letter-spacing:0.5px;margin-bottom:10px;
+}
+.platform-card p{color:#7AAAC8;font-size:14px;line-height:1.65;}
+
+@media(max-width:900px){.platform-grid{grid-template-columns:1fr;}}
+@media(max-width:600px){
+  .platform-section{padding:80px 6%;}
+  .platform-container .section-title{font-size:26px;}
+  .platform-sub{font-size:14px;margin-bottom:40px;}
+}
+
+/* ============================================================
+   MARKET STRIP
+============================================================ */
+.market-strip{
+  background:linear-gradient(135deg,var(--blue-dark) 0%,#003366 100%);
+  padding:60px 8%;
+}
+.stats-grid{
+  max-width:1200px;margin:auto;display:grid;
+  grid-template-columns:repeat(4,1fr);gap:40px;
+}
+.stat-item{text-align:center;}
+.stat-num{
+  display:block;font-family:'Rajdhani',sans-serif;font-size:42px;
+  font-weight:700;color:var(--white);letter-spacing:1px;
+}
+.stat-desc{color:rgba(255,255,255,0.7);font-size:14px;line-height:1.65;margin-top:8px;}
+
+@media(max-width:900px){.stats-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:500px){.stats-grid{grid-template-columns:1fr;}.stat-num{font-size:34px;}}
+
+/* ============================================================
+   PRICING
+============================================================ */
+.pricing-section{padding:130px 8%;background:var(--off-white);position:relative;overflow:hidden;}
+.pricing-section::before{
+  content:"";position:absolute;top:0;right:0;width:250px;height:250px;
+  background:var(--blue);opacity:0.06;clip-path:polygon(100% 0,0 0,100% 100%);
+}
+.pricing-section::after{
+  content:"";position:absolute;bottom:0;left:0;width:260px;height:260px;
+  background:var(--deep);opacity:0.07;clip-path:polygon(0 100%,0 0,100% 100%);
+}
+.pricing-container{max-width:1100px;margin:auto;text-align:center;position:relative;z-index:2;}
+.pricing-container .section-title{color:var(--text-dark);}
+.pricing-container .section-label{color:var(--gold-dark);}
+.pricing-container .section-divider{margin:14px auto 26px;background:linear-gradient(90deg,var(--blue-dim),transparent);}
+.pricing-sub{max-width:620px;margin:0 auto 60px;color:#4A6070;line-height:1.8;font-size:16px;}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;align-items:start;}
+.price-card{
+  background:var(--white);padding:36px 30px;border-radius:12px;
+  border:1px solid #C0D8E8;text-align:left;box-shadow:0 4px 20px rgba(0,0,0,0.04);
+  transition:0.3s;
+}
+.price-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,170,255,0.1);}
+.price-card.featured{
+  background:linear-gradient(160deg,var(--deep-mid),#081428);
+  border-color:rgba(0,170,255,0.4);transform:scale(1.03);
+  box-shadow:0 20px 50px rgba(0,170,255,0.15);
+}
+.price-tag{
+  display:inline-block;padding:5px 14px;border-radius:3px;
+  font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  background:rgba(0,170,255,0.08);color:var(--blue);
+  border:1px solid rgba(0,170,255,0.2);margin-bottom:14px;
+  font-family:'IBM Plex Mono',monospace;
+}
+.price-card.featured .price-tag{background:rgba(0,170,255,0.15);}
+.price-card h3{font-family:'Rajdhani',sans-serif;font-size:24px;margin-bottom:6px;color:var(--text-dark);letter-spacing:0.5px;}
+.price-card.featured h3{color:var(--blue);}
+.price-card > p{color:#607080;font-size:14px;margin-bottom:4px;}
+.price-card.featured > p{color:#7AAAC8;}
+.price-amount{
+  font-family:'Rajdhani',sans-serif;font-size:34px;font-weight:700;
+  color:var(--blue-dim);margin:16px 0 6px;display:block;
+}
+.price-card.featured .price-amount{color:var(--blue);}
+.price-unit{color:#888;font-size:13px;margin-bottom:22px;}
+.price-card.featured .price-unit{color:#7AAAC8;}
+.price-features{list-style:none;margin-bottom:28px;}
+.price-features li{
+  padding:9px 0;border-bottom:1px solid rgba(0,0,0,0.06);
+  color:#4A6070;font-size:14px;display:flex;gap:10px;align-items:flex-start;
+}
+.price-card.featured .price-features li{border-bottom-color:rgba(255,255,255,0.07);color:#7AAAC8;}
+.price-features li:last-child{border-bottom:none;}
+.check{color:var(--blue);font-weight:700;flex-shrink:0;}
+.price-btn{
+  display:block;text-align:center;padding:13px;border-radius:5px;
+  text-decoration:none;font-weight:700;font-size:13px;letter-spacing:1px;text-transform:uppercase;
+  transition:0.3s;font-family:'IBM Plex Mono',monospace;
+}
+.price-btn-outline{border:1px solid var(--deep);color:var(--deep);}
+.price-btn-outline:hover{background:var(--deep);color:var(--white);}
+.price-btn-blue{background:linear-gradient(135deg,var(--blue),var(--blue-dark));color:var(--deep);}
+.price-btn-blue:hover{filter:brightness(1.1);}
+
+@media(max-width:900px){.pricing-grid{grid-template-columns:1fr;}.price-card.featured{transform:scale(1);}}
+@media(max-width:600px){.pricing-section{padding:80px 6%;}.pricing-container .section-title{font-size:26px;}}
+
+/* ============================================================
+   FAQ
+============================================================ */
+.faq-section{padding:130px 8%;background:var(--deep);position:relative;overflow:hidden;}
+.faq-section::before{
+  content:"";position:absolute;top:0;right:0;width:240px;height:240px;
+  background:var(--blue);opacity:0.06;clip-path:polygon(100% 0,0 0,100% 100%);
+}
+.faq-section::after{
+  content:"";position:absolute;bottom:0;left:0;width:250px;height:250px;
+  background:var(--gold);opacity:0.05;clip-path:polygon(0 100%,0 0,100% 100%);
+}
+.faq-container{max-width:800px;margin:auto;position:relative;z-index:2;}
+.faq-header{text-align:center;margin-bottom:50px;}
+.faq-header .section-title{color:var(--blue);}
+.faq-header .section-label{color:var(--gold);}
+.faq-header .section-divider{margin:14px auto 20px;}
+.faq-item{border-bottom:1px solid rgba(0,170,255,0.12);padding:20px 0;}
+.faq-question{display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:20px;}
+.faq-question h4{
+  font-family:'Rajdhani',sans-serif;color:rgba(0,170,255,0.9);
+  font-size:17px;font-weight:600;letter-spacing:0.3px;
+}
+.faq-icon{color:var(--blue);font-size:20px;font-weight:300;flex-shrink:0;transition:0.3s;font-family:'IBM Plex Mono',monospace;}
+.faq-answer{display:none;color:#607080;font-size:15px;line-height:1.75;padding-top:14px;}
+.faq-item.open .faq-answer{display:block;}
+.faq-item.open .faq-icon{transform:rotate(45deg);color:var(--gold);}
+
+@media(max-width:600px){.faq-section{padding:80px 6%;}.faq-question h4{font-size:15px;}}
+
+/* ============================================================
+   CONTACT
+============================================================ */
+.contact-section{padding:130px 8%;background:var(--deep-mid);position:relative;overflow:hidden;}
+.contact-section::before{
+  content:"";position:absolute;top:0;right:0;width:240px;height:240px;
+  background:var(--blue);opacity:0.06;clip-path:polygon(100% 0,0 0,100% 100%);
+}
+.contact-section::after{
+  content:"";position:absolute;bottom:0;left:0;width:250px;height:250px;
+  background:var(--gold);opacity:0.06;clip-path:polygon(0 100%,0 0,100% 100%);
+}
+.contact-container{
+  max-width:1050px;margin:auto;display:grid;grid-template-columns:1fr 1fr;
+  gap:70px;align-items:start;position:relative;z-index:2;
+}
+.contact-left .section-title{color:var(--blue);}
+.contact-left .section-label{color:var(--gold);}
+.contact-left .section-divider{background:linear-gradient(90deg,var(--blue),transparent);}
+.contact-left p{color:#7AAAC8;line-height:1.8;font-size:16px;margin-bottom:30px;}
+.contact-info-item{display:flex;align-items:flex-start;gap:14px;margin-bottom:20px;}
+.contact-icon{
+  width:38px;height:38px;background:rgba(0,170,255,0.08);border:1px solid rgba(0,170,255,0.18);
+  border-radius:5px;display:flex;align-items:center;justify-content:center;
+  color:var(--blue);font-size:16px;flex-shrink:0;
+}
+.contact-info-text strong{color:rgba(0,170,255,0.9);font-size:13px;display:block;margin-bottom:3px;}
+.contact-info-text span{color:#607080;font-size:14px;}
+.contact-form{display:flex;flex-direction:column;gap:16px;}
+.form-group{display:flex;flex-direction:column;gap:6px;}
+.form-group label{color:var(--blue);font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;font-family:'IBM Plex Mono',monospace;}
+.form-group input,.form-group select,.form-group textarea{
+  background:rgba(0,170,255,0.04);border:1px solid rgba(0,170,255,0.18);
+  color:var(--white);padding:12px 16px;border-radius:5px;font-size:14px;
+  font-family:'Source Sans 3',sans-serif;outline:none;transition:0.3s;
+}
+.form-group input::placeholder,.form-group textarea::placeholder{color:#607080;}
+.form-group select option{background:#060E1C;color:var(--white);}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{
+  border-color:var(--blue);background:rgba(0,170,255,0.07);
+}
+.form-group textarea{min-height:120px;resize:vertical;}
+.form-submit{
+  background:linear-gradient(135deg,var(--blue),var(--blue-dark));
+  color:var(--deep);border:none;padding:14px 28px;border-radius:5px;
+  font-weight:700;font-size:13px;letter-spacing:1px;text-transform:uppercase;
+  cursor:pointer;transition:0.3s;font-family:'IBM Plex Mono',monospace;
+}
+.form-submit:hover{filter:brightness(1.15);transform:translateY(-2px);}
+
+@media(max-width:900px){.contact-section{padding:90px 6%;}.contact-container{grid-template-columns:1fr;gap:50px;}}
+@media(max-width:600px){.contact-section{padding:80px 6%;}.contact-left .section-title{font-size:26px;}}
+
+/* ============================================================
+   FOOTER
+============================================================ */
+.footer{background:#020608;padding:70px 8% 30px;border-top:1px solid rgba(0,170,255,0.12);}
+.footer-grid{
+  max-width:1100px;margin:auto;display:grid;grid-template-columns:2fr 1fr 1fr;
+  gap:50px;margin-bottom:50px;
+}
+.footer-brand .logo-wrap{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+.footer-brand .logo-icon-sm{
+  width:32px;height:32px;background:linear-gradient(135deg,var(--blue),var(--blue-dark));
+  border-radius:7px;display:flex;align-items:center;justify-content:center;
+}
+.footer-brand .logo-icon-sm svg{width:18px;height:18px;}
+.footer-brand .logo-text{
+  font-family:'Rajdhani',sans-serif;font-size:20px;font-weight:700;
+  color:var(--blue);letter-spacing:2px;
+}
+.footer-brand .logo-text span{color:var(--white);font-weight:400;}
+.footer-brand p{color:#3A5070;font-size:14px;line-height:1.8;max-width:340px;}
+.footer-col h4{
+  font-family:'Rajdhani',sans-serif;color:var(--blue);
+  font-size:14px;letter-spacing:2px;text-transform:uppercase;margin-bottom:18px;
+}
+.footer-col a{display:block;color:#3A5070;font-size:14px;text-decoration:none;margin-bottom:10px;transition:color 0.3s;}
+.footer-col a:hover{color:var(--blue);}
+.footer-bottom{
+  max-width:1100px;margin:auto;padding-top:28px;
+  border-top:1px solid rgba(0,170,255,0.08);
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
+}
+.footer-bottom p{color:#304050;font-size:13px;}
+.footer-bottom p span{color:var(--blue);}
+
+@media(max-width:900px){
+  .footer-grid{grid-template-columns:1fr 1fr;gap:35px;}
+  .footer-brand{grid-column:span 2;}
+}
+@media(max-width:600px){
+  .footer-grid{grid-template-columns:1fr;}
+  .footer-brand{grid-column:auto;}
+  .footer-bottom{flex-direction:column;text-align:center;}
+}
+
+</style>
+</head>
+<body>
+
+<!-- ===================== NAVBAR ===================== -->
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="#home" class="logo">
+      <div class="logo-icon">
+        <!-- Shield + AI signal icon -->
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2L4 5.5V11C4 15.5 7.5 19.7 12 21C16.5 19.7 20 15.5 20 11V5.5L12 2Z" fill="#04090F" stroke="#04090F" stroke-width="0.5"/>
+          <path d="M8 12L10.5 14.5L16 9" stroke="#04090F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      SignalShield<span> AI Ltd</span>
+    </a>
+    <div id="navMenu">
+      <a href="#about">About</a>
+      <a href="#how-it-works">How It Works</a>
+      <a href="#platform">Technology</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="menu-toggle" id="menuToggle">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero-section" id="home">
+  <div class="hero-glow"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-container">
+    <div class="hero-left">
+      <div class="hero-badge">UK-Registered · AI-Driven SaaS · AdTech Innovation</div>
+      <h1>Securing the <span>Integrity</span><br>of <span>Digital</span><br>Advertising</h1>
+      <div class="hero-divider"></div>
+      <p class="hero-text">
+        SignalShield AI is an independent truth layer for digital advertising ecosystems — combining advanced traffic integrity validation with proactive policy-risk intelligence to combat ad fraud, synthetic attribution inflation, and opaque platform enforcement in the £49.1B UK ad market.
+      </p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn-blue">Request a Demo →</a>
+        <a href="#platform" class="btn-outline-blue">Explore Technology</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-card">
+        <div class="hero-card-title">// Platform Performance Metrics</div>
+        <div class="hero-stat">
+          <div class="stat-dot"></div>
+          <span class="stat-label">Signal Integrity Score Accuracy</span>
+          <span class="stat-val">85%+</span>
+        </div>
+        <div class="hero-stat">
+          <div class="stat-dot"></div>
+          <span class="stat-label">Graph Fraud Detection AUC</span>
+          <span class="stat-val">0.92</span>
+        </div>
+        <div class="hero-stat">
+          <div class="stat-dot"></div>
+          <span class="stat-label">Pre-Ban Alert Lead Time</span>
+          <span class="stat-val">72 hrs</span>
+        </div>
+        <div class="hero-stat">
+          <div class="stat-dot"></div>
+          <span class="stat-label">Signal Processing Latency</span>
+          <span class="stat-val">&lt;100ms</span>
+        </div>
+        <div class="hero-stat">
+          <div class="stat-dot gold"></div>
+          <span class="stat-label">UK Ad Market Forecast (2026)</span>
+          <span class="stat-val" style="color:var(--gold)">£49.1B</span>
+        </div>
+        <div class="hero-stat">
+          <div class="stat-dot gold"></div>
+          <span class="stat-label">Annual UK Ad Fraud Losses</span>
+          <span class="stat-val" style="color:var(--gold)">£7B+</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ABOUT ===================== -->
+<section class="about-section" id="about">
+  <div class="about-container">
+    <div class="about-left">
+      <div class="section-label">About SignalShield AI Ltd</div>
+      <h2 class="section-title">The Independent Truth<br>Layer for Digital Ads</h2>
+      <div class="section-divider"></div>
+      <p>
+        SignalShield AI Ltd is a UK-registered private limited company developing a cloud-native, AI-driven SaaS platform to combat ad-fraud, synthetic inflation, and opaque platform enforcement. We reframe digital growth as a <strong style="color:rgba(0,170,255,0.9)">Signal Integrity challenge</strong> — using autonomous AI agents to validate conversion authenticity and assess account-level enforcement risk before bans occur.
+      </p>
+      <p>
+        The platform integrates via API with advertiser stacks, ingesting signals like typing rhythms, mouse patterns, network topology, and creative content to deliver a proprietary <strong style="color:rgba(0,170,255,0.9)">Signal Integrity Score</strong> — shifting advertisers from reactive dispute handling to proactive risk orchestration.
+      </p>
+      <p>
+        Fully aligned with the Online Safety Act 2023, FCA, and ASA audit requirements — with native GDPR compliance through differential privacy and federated learning. Targeting 50–70 UK agencies in Year 1 and £750k ARR by Year 3.
+      </p>
+      <div class="about-features">
+        <div class="feature-tag">GDPR &amp; CCPA Compliant</div>
+        <div class="feature-tag">Online Safety Act 2023</div>
+        <div class="feature-tag">FCA / ASA XAI Audits</div>
+        <div class="feature-tag">Federated Learning</div>
+        <div class="feature-tag">83% Gross Margin</div>
+        <div class="feature-tag">Agentic AI Reasoning</div>
+      </div>
+    </div>
+    <div class="founder-box">
+      <div class="founder-box-title">Co-Founder &amp; CEO</div>
+      <div class="founder-box-div"></div>
+      <p>
+        <strong>Venkata Narendra Pulipati</strong> is a London-based founder and growth systems consultant specialising in SEO, automation, and AI-driven revenue systems. Founder of FlowOpsys, with 6+ years scaling digital businesses across Groupon and AI Labs Pvt Ltd.
+      </p>
+      <p>
+        His hands-on experience in agency workflows and performance marketing pain points drives SignalShield's <strong>product-market fit</strong>, customer acquisition strategy, and revenue scaling for the £49.1B UK ad ecosystem.
+      </p>
+      <a href="#contact" class="linkedin-btn">Contact the Founders →</a>
+      <div class="founder-box-sub">
+        <div class="founder-box-title">Co-Founder — Technical Architecture</div>
+        <p style="margin-bottom:0;font-size:14px;">
+          <strong>Saikrishna Lanke</strong> holds an MSc in Computer Science (UEL) with 5+ years in AI evaluation and policy-driven environments including Amazon. Leads heterogeneous graph transformers, agentic reasoning workflows, and XAI dashboard development.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PROCESS ===================== -->
+<section class="process-section" id="how-it-works">
+  <div class="process-container">
+    <div class="section-label">How It Works</div>
+    <h2 class="section-title">The Signal Integrity Pipeline</h2>
+    <div class="section-divider"></div>
+    <p class="process-sub">
+      Every ad campaign passes through SignalShield's four-stage intelligence pipeline — converting fragmented advertising signals into real-time integrity scores, predictive ban alerts, and audit-ready compliance artefacts.
+    </p>
+    <div class="process-grid">
+
+      <div class="process-card">
+        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&q=80&auto=format&fit=crop" class="process-card-img" alt="Signal Ingestion">
+        <div class="step-badge">STEP 01</div>
+        <h3>Signal Ingestion</h3>
+        <p>Real-time API streaming ingests over 1M daily signals — clicks, conversions, behavioural events (mouse dynamics, typing cadence, scroll velocity), creative assets, and policy updates via Meta Ads API v18, Google Ads API, and TikTok Business API.</p>
+      </div>
+
+      <div class="process-card">
+        <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=400&q=80&auto=format&fit=crop" class="process-card-img" alt="Graph ML Analysis">
+        <div class="step-badge">STEP 02</div>
+        <h3>Graph ML Analysis</h3>
+        <p>Heterogeneous Graph Transformers map user/session/creative/IP relationships, detecting bot clusters and topological fraud communities. Sequence models identify behavioural anomalies longitudinally across weeks, achieving AUC of 0.92 on persistent threats.</p>
+      </div>
+
+      <div class="process-card">
+        <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=400&q=80&auto=format&fit=crop" class="process-card-img" alt="Agentic Reasoning">
+        <div class="step-badge">STEP 03</div>
+        <h3>Agentic Reasoning</h3>
+        <p>Specialised AI agents — Fraud Agent, Policy Agent, and Account Health Agent — debate and vote using probabilistic coordination protocols over longitudinal histories, generating a unified Signal Integrity Score and proactive mitigation recommendations up to 72 hours before enforcement.</p>
+      </div>
+
+      <div class="process-card">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=80&auto=format&fit=crop" class="process-card-img" alt="Trust Dashboard">
+        <div class="step-badge">STEP 04</div>
+        <h3>Trust Dashboard</h3>
+        <p>The XAI Trust Dashboard delivers human-readable score breakdowns, real-time alerts, and automated FCA/ASA-ready audit artefacts. SHAP-based decomposition links every risk finding to specific policy clauses and enforcement precedents — saving agencies 5–10 hours per week.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== MARKET STRIP ===================== -->
+<section class="market-strip">
+  <div class="stats-grid">
+    <div class="stat-item">
+      <span class="stat-num">£49.1B</span>
+      <div class="stat-desc">UK digital ad market forecast by 2026 — Europe's largest advertising ecosystem</div>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">£7B+</span>
+      <div class="stat-desc">Estimated annual UK ad fraud losses — 20% of total digital ad spend lost to bots and synthetic traffic</div>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">83%</span>
+      <div class="stat-desc">SignalShield's gross margin with cloud-native SaaS model and 9.3x LTV:CAC ratio</div>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">£750K</span>
+      <div class="stat-desc">Projected Annual Recurring Revenue by Year 3 with 300 global clients and net margin of 17%</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PLATFORM / TECHNOLOGY ===================== -->
+<section class="platform-section" id="platform">
+  <div class="platform-container">
+    <div class="section-label">Core Innovation Pillars</div>
+    <h2 class="section-title">Five Proprietary Technology<br>Elements</h2>
+    <div class="section-divider"></div>
+    <p class="platform-sub">
+      SignalShield's architecture integrates five novel AI and data-science paradigms never combined before in UK adtech — creating an independent signal integrity layer that competitors cannot replicate without years of data accumulation.
+    </p>
+    <div class="platform-grid">
+
+      <div class="platform-card">
+        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&q=80&auto=format&fit=crop" class="platform-card-img" alt="Signal Integrity Score">
+        <div class="platform-badge">ELEMENT A</div>
+        <h3>Signal Integrity Score</h3>
+        <p>A proprietary composite metric fusing longitudinal behavioural signals (typing cadence, mouse dynamics), heterogeneous graph-topology features (bot cluster proximity), and policy indicators (creative risk, appeal outcomes) into a single interpretable risk score with confidence bands — the only unified behavioral-graph-policy scoring in the UK market.</p>
+      </div>
+
+      <div class="platform-card">
+        <img src="https://images.unsplash.com/photo-1529400971008-f566de0e6dfc?w=400&q=80&auto=format&fit=crop" class="platform-card-img" alt="Policy Semantic Database">
+        <div class="platform-badge">ELEMENT B</div>
+        <h3>Policy Semantic & Drift Database</h3>
+        <p>A proprietary dataset of 10,000+ Meta, Google, and TikTok enforcement records with semantic embeddings and drift-learning mechanisms. Change-point analysis on disapproval time-series dynamically updates risk thresholds — creating a compounding data moat that new entrants cannot replicate without equivalent enforcement depth.</p>
+      </div>
+
+      <div class="platform-card">
+        <img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=400&q=80&auto=format&fit=crop" class="platform-card-img" alt="Agentic Reasoning">
+        <div class="platform-badge">ELEMENT C</div>
+        <h3>Agentic Multi-Layer Reasoning</h3>
+        <p>CrewAI/LangChain orchestrated agents — Fraud, Policy, Account Health — use debate-style convergence and probabilistic voting across longitudinal account histories. This time-aware orchestration enables early-warning escalation and proactive mitigations, shifting campaign governance from firefighting to predictive risk management.</p>
+      </div>
+
+      <div class="platform-card">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80&auto=format&fit=crop" class="platform-card-img" alt="Graph Integrity Modelling">
+        <div class="platform-badge">ELEMENT D</div>
+        <h3>Graph-Based Integrity Modelling</h3>
+        <p>PyTorch Geometric Heterogeneous Graph Transformers with a custom node/edge schema spanning users, sessions, creatives, IPs, campaigns, and payment methods. Purpose-built metapaths detect fraud communities invisible to rule-based filters; label propagation measures topological distance to known malicious clusters with 30% higher AUC than static baselines.</p>
+      </div>
+
+      <div class="platform-card">
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&q=80&auto=format&fit=crop" class="platform-card-img" alt="Trust Dashboard XAI">
+        <div class="platform-badge">ELEMENT E</div>
+        <h3>Trust Dashboard & XAI Layer</h3>
+        <p>SHAP/LIME decompositions translate the Signal Integrity Score into structured audit artefacts linked directly to policy clauses and enforcement precedents. FCA/ASA-ready exports generate defensible compliance documentation for regulated verticals (FinTech, Gambling, Health) — tightly coupled to the proprietary scoring database so competitors cannot replicate without the underlying data.</p>
+      </div>
+
+      <div class="platform-card">
+        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400&q=80&auto=format&fit=crop" class="platform-card-img" alt="Privacy by Design">
+        <div class="platform-badge">INFRASTRUCTURE</div>
+        <h3>Privacy-by-Design Architecture</h3>
+        <p>Differential privacy (ε=1.0) via Opacus on behavioural embeddings ensures individual consumer untraceability. Federated learning aggregates cross-client insights without centralising raw data. Kubernetes-orchestrated microservices on AWS EKS / GCP GKE scale seamlessly from 10 to 10,000 clients — maintaining 99.99% uptime and £0.10 per 1,000 signals processing cost.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PRICING ===================== -->
+<section class="pricing-section" id="pricing">
+  <div class="pricing-container">
+    <div class="section-label">Subscription Pricing</div>
+    <h2 class="section-title">Enterprise-Grade Ad Integrity.<br>From £99 Per Month.</h2>
+    <div class="section-divider"></div>
+    <p class="pricing-sub">
+      A SignalShield Premium subscription at £249/month costs less than 1% of the average £40,000 loss from a single account ban — delivering continuous pre-ban intelligence, fraud detection, and audit-ready compliance documentation year-round.
+    </p>
+    <div class="pricing-grid">
+
+      <div class="price-card">
+        <div class="price-tag">Standard Tier</div>
+        <h3>Small Agency</h3>
+        <p>For early adopters and small agencies requiring core fraud detection and basic compliance monitoring.</p>
+        <span class="price-amount">£99</span>
+        <div class="price-unit">per month · billed annually</div>
+        <ul class="price-features">
+          <li><span class="check">✓</span> Real-time signal ingestion (100k signals/day)</li>
+          <li><span class="check">✓</span> Signal Integrity Score dashboard</li>
+          <li><span class="check">✓</span> Meta Ads API integration</li>
+          <li><span class="check">✓</span> Basic bot cluster detection</li>
+          <li><span class="check">✓</span> GDPR-compliant processing</li>
+          <li><span class="check">✓</span> Email support</li>
+        </ul>
+        <a href="#contact" class="price-btn price-btn-outline">Get Started →</a>
+      </div>
+
+      <div class="price-card featured">
+        <div class="price-tag">Premium Tier</div>
+        <h3>Performance Agency</h3>
+        <p>For core target agencies managing £100k+ monthly budgets exposed to bans and attribution fraud.</p>
+        <span class="price-amount">£249</span>
+        <div class="price-unit">per month · billed annually</div>
+        <ul class="price-features">
+          <li><span class="check">✓</span> Everything in Standard, plus:</li>
+          <li><span class="check">✓</span> Agentic pre-ban alerts (72hr lead time)</li>
+          <li><span class="check">✓</span> Policy Semantic & Drift Database</li>
+          <li><span class="check">✓</span> Multi-platform (Meta + Google)</li>
+          <li><span class="check">✓</span> XAI Trust Dashboard with audit exports</li>
+          <li><span class="check">✓</span> Heterogeneous graph fraud modelling</li>
+          <li><span class="check">✓</span> Priority compliance support</li>
+        </ul>
+        <a href="#contact" class="price-btn price-btn-blue">Request Pilot →</a>
+      </div>
+
+      <div class="price-card">
+        <div class="price-tag">Enterprise Tier</div>
+        <h3>Large Agency / Brand</h3>
+        <p>For large agencies, regulated sectors (FinTech, Gambling, Health) and brands with full integration needs.</p>
+        <span class="price-amount">£499</span>
+        <div class="price-unit">per month · bespoke SLA</div>
+        <ul class="price-features">
+          <li><span class="check">✓</span> Everything in Premium, plus:</li>
+          <li><span class="check">✓</span> Dedicated policy monitoring pipeline</li>
+          <li><span class="check">✓</span> 1M signals/day API limits</li>
+          <li><span class="check">✓</span> Salesforce CRM integration</li>
+          <li><span class="check">✓</span> FCA/ASA regulatory audit packs</li>
+          <li><span class="check">✓</span> Custom onboarding &amp; data pipeline setup</li>
+          <li><span class="check">✓</span> 24/7 technical support</li>
+        </ul>
+        <a href="#contact" class="price-btn price-btn-outline">Enquire Now →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section class="faq-section" id="faq">
+  <div class="faq-container">
+    <div class="faq-header">
+      <div class="section-label">FAQ</div>
+      <h2 class="section-title">Common Questions</h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <h4>What exactly is the "Signal Integrity" problem that SignalShield solves?</h4>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-answer">
+        Signal Integrity refers to the dual challenge facing UK performance advertisers: synthetic traffic contaminating bidding models (bot-driven fake conversions inflating attribution), and opaque platform enforcement leading to sudden account suspensions. Fraud now accounts for an estimated £7 billion in UK ad spend losses annually — approximately 20% of total digital spend. In parallel, over 85% of performance agencies report experiencing account bans from Meta or Google, with individual incidents costing between £5,000 and £50,000 in lost fees, disrupted campaigns, and recovery time. SignalShield closes this gap by delivering an independent truth layer that combines traffic authenticity analysis, behavioural fraud detection, and proactive policy compliance monitoring within a single, explainable platform — shifting agencies from reactive dispute handling to proactive risk orchestration.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <h4>How does SignalShield predict account bans 72 hours before they happen?</h4>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-answer">
+        Traditional ad-fraud tools alert agencies after enforcement has already occurred — by which point campaign disruption is inevitable. SignalShield's agentic multi-layer reasoning engine continuously monitors longitudinal account histories, correlating behavioural signals (typing cadence, mouse dynamics), graph topology (proximity to known bot clusters), and policy semantics (creative risk, historical disapproval rates) across weeks, not just individual events. When a combination of these signals exceeds proprietary risk thresholds — for example, coordinated bot-cluster activity driving abnormal conversion patterns while creatives show rising policy-violation probability — the system escalates alerts with recommended mitigations (swap creatives, block traffic hubs) before enforcement triggers. The Policy Semantic and Drift Database, trained on 10,000+ historical enforcement outcomes, enables the system to identify enforcement patterns 72 hours in advance, achieving over 80% prediction accuracy in beta testing.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <h4>Does SignalShield require replacing existing ad stack infrastructure?</h4>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-answer">
+        No. SignalShield is designed as a software-first overlay that integrates with existing advertiser stacks via standard API connections — Meta Ads API v18 first, expanding to Google Ads API, TikTok Business API, and Amazon DSP without core architectural changes. The modular connector architecture abstracts platform schemas into unified signal formats, enabling plug-and-play expansion. For enterprise clients, a Salesforce AppExchange integration is available for seamless CRM and campaign management workflow embedding. SignalShield functions as a SaaS intelligence layer that sits alongside existing tools rather than replacing them, ensuring immediate value without capital-intensive infrastructure changes or operational disruption.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <h4>How does SignalShield comply with GDPR and the Online Safety Act 2023?</h4>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-answer">
+        SignalShield is built with privacy-by-design from the ground up. Differential privacy (ε=1.0) via Opacus injects calibrated mathematical noise to behavioural embeddings, ensuring individual consumer untraceability even under database compromise. Federated learning aggregates model improvements across clients without centralising raw data, so no personally identifiable information leaves client environments. All cloud processing uses ephemeral GDPR-aligned data handling practices. The Trust Dashboard generates structured audit artefacts mapped to specific Online Safety Act 2023 and ASA/FCA policy clauses, enabling agencies to demonstrate proactive compliance oversight — particularly critical for regulated verticals like FinTech, Gambling, and Health, where regulatory penalties can reach 10% of global turnover. Quarterly DPIA reviews and a retained legal advisor ensure ongoing regulatory alignment.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <h4>What makes SignalShield's approach genuinely different from SHIELD, DoubleVerify, or Hoopoz?</h4>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-answer">
+        Existing tools operate in isolated silos: SHIELD focuses on exchange-side invalid traffic detection but lacks advertiser account-level risk modelling; DoubleVerify addresses viewability and impression-level fraud but uses static ML models without policy enforcement prediction; Hoopoz AI scans creatives with rule-based compliance checks but misses behavioural fraud patterns. None of them link traffic anomalies to policy enforcement probability or provide pre-ban intelligence. SignalShield uniquely unifies behavioural fraud detection, heterogeneous graph topology analysis, and policy semantic drift learning into a single Signal Integrity Score with agentic mitigation workflows and FCA/ASA-auditable explainability. This synthesis — applied to the advertiser side rather than the exchange side — represents a fundamentally new technical category that no competitor has built, requiring years of enforcement data accumulation and proprietary graph architecture to replicate.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <h4>What is the current development status and what validation has been completed?</h4>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-answer">
+        SignalShield is in MVP development phase with a 12-month staged rollout. Months 1–3 focus on core MVP delivery including Meta Ads integration, the foundational Signal Integrity Score pipeline, and a basic dashboard with 10 pilot agency partners. Months 4–6 introduce the Policy Semantic and Drift Database and agentic reasoning engine with expanded beta testing. Months 7–12 deliver multi-platform integrations, the full XAI Trust Dashboard with FCA/ASA audit exports, and patent filings covering the Signal Integrity Score aggregation, agentic workflows, and graph metapaths. Market validation surveys with 100 UK digital advertising professionals confirmed 92% report concerns over bot-driven attribution inflation, 87% cite fear of account bans, and 78% expressed willingness to adopt a real-time integrity scoring platform — validating strong product-market fit ahead of commercial launch.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===================== CONTACT ===================== -->
+<section class="contact-section" id="contact">
+  <div class="contact-container">
+
+    <div class="contact-left">
+      <div class="section-label">Get In Touch</div>
+      <h2 class="section-title">Request a Pilot or<br>Partnership Discussion</h2>
+      <div class="section-divider"></div>
+      <p>
+        Whether you are a performance marketing agency, mid-tier e-commerce brand, regulated advertiser (FinTech, Gambling, Health), or technology integration partner — we would like to hear from you. Contact us to arrange a demonstration, discuss pilot opportunities, or explore licensing and partnership options.
+      </p>
+      <div class="contact-info-item">
+        <div class="contact-icon">✉</div>
+        <div class="contact-info-text">
+          <strong>Email — Narendra</strong>
+          <span>narendrapulipati6@gmail.com</span>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-icon">✉</div>
+        <div class="contact-info-text">
+          <strong>Email — Saikrishna</strong>
+          <span>krishnals4543@gmail.com</span>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-icon">☎</div>
+        <div class="contact-info-text">
+          <strong>Phone — Narendra</strong>
+          <span>07877 978134</span>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-icon">⚑</div>
+        <div class="contact-info-text">
+          <strong>Location</strong>
+          <span>London, United Kingdom</span>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-icon">◈</div>
+        <div class="contact-info-text">
+          <strong>Target Sectors</strong>
+          <span>Performance Agencies · E-Commerce Brands · FinTech · Gambling · Health · AdTech Partners</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-right">
+      <div class="contact-form">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" placeholder="Your full name">
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>Organisation</label>
+          <input type="text" placeholder="Agency or company name">
+        </div>
+        <div class="form-group">
+          <label>I am a…</label>
+          <select>
+            <option value="">Select your role</option>
+            <option>Performance Marketing Agency Director</option>
+            <option>Head of Paid Media / PPC</option>
+            <option>E-Commerce Brand / DTC Business Owner</option>
+            <option>FinTech / Gambling / Health Advertiser</option>
+            <option>AdTech Platform / Integration Partner</option>
+            <option>CRM / Salesforce Ecosystem Partner</option>
+            <option>Investor / Funder</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Monthly Ad Spend (£)</label>
+          <select>
+            <option value="">Select your monthly budget</option>
+            <option>Under £10,000</option>
+            <option>£10,000 – £50,000</option>
+            <option>£50,000 – £100,000</option>
+            <option>£100,000 – £500,000</option>
+            <option>£500,000+</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Tell us about your interest in SignalShield AI — demo request, pilot programme, partnership, or investment enquiry…"></textarea>
+        </div>
+        <button class="form-submit" type="button" onclick="this.textContent='Enquiry Sent ✓';this.style.background='linear-gradient(135deg,#0088DD,#005FAA)';">Send Enquiry →</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo-wrap">
+        <div class="logo-icon-sm">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L4 5.5V11C4 15.5 7.5 19.7 12 21C16.5 19.7 20 15.5 20 11V5.5L12 2Z" fill="#04090F"/>
+            <path d="M8 12L10.5 14.5L16 9" stroke="#04090F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="logo-text">SignalShield<span> AI Ltd</span></span>
+      </div>
+      <p>
+        A UK-registered AI-driven SaaS platform delivering an independent truth layer for digital advertising — combining traffic integrity validation, predictive policy-risk intelligence, and explainable AI audit tools for the £49.1B UK ad market and beyond.
+      </p>
+    </div>
+    <div class="footer-col">
+      <h4>Platform</h4>
+      <a href="#how-it-works">How It Works</a>
+      <a href="#platform">Technology</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="#contact">Request Pilot</a>
+      <a href="#contact">Partnerships</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 <span>SignalShield AI Ltd</span>. All rights reserved. UK AdTech Innovation.</p>
+    <p>Founders: <span>Venkata Narendra Pulipati</span> &amp; <span>Saikrishna Lanke</span></p>
+  </div>
+</footer>
+
+<!-- ===================== SCRIPTS ===================== -->
+<script>
+
+/* NAVBAR TOGGLE */
+const toggle = document.getElementById("menuToggle");
+const menu = document.getElementById("navMenu");
+toggle.addEventListener("click",()=>menu.classList.toggle("active"));
+document.querySelectorAll("#navMenu a").forEach(link=>{
+  link.addEventListener("click",()=>menu.classList.remove("active"));
+});
+
+/* SMOOTH SCROLL */
+document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+  anchor.addEventListener("click",function(e){
+    e.preventDefault();
+    const target=document.querySelector(this.getAttribute("href"));
+    if(target)target.scrollIntoView({behavior:"smooth"});
+  });
+});
+
+/* FAQ TOGGLE */
+function toggleFaq(el){
+  const item=el.parentElement;
+  const wasOpen=item.classList.contains("open");
+  document.querySelectorAll(".faq-item").forEach(i=>i.classList.remove("open"));
+  if(!wasOpen)item.classList.add("open");
+}
+
+</script>
+</body>
+</html>
