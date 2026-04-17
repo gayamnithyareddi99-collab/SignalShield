@@ -980,13 +980,15 @@ html{font-family:'Source Sans 3',sans-serif;}
 <section class="contact-section" id="contact">
   <div class="contact-container">
 
+    <!-- LEFT SIDE (UNCHANGED) -->
     <div class="contact-left">
       <div class="section-label">Get In Touch</div>
       <h2 class="section-title">Request a Pilot or<br>Partnership Discussion</h2>
       <div class="section-divider"></div>
       <p>
-        Whether you are a performance marketing agency, mid-tier e-commerce brand, regulated advertiser (FinTech, Gambling, Health), or technology integration partner we would like to hear from you. Contact us to arrange a demonstration, discuss pilot opportunities, or explore licensing and partnership options.
+        Whether you are a performance marketing agency, mid-tier e-commerce brand, regulated advertiser, or integration partner — we would like to hear from you.
       </p>
+
       <div class="contact-info-item">
         <div class="contact-icon">✉</div>
         <div class="contact-info-text">
@@ -994,6 +996,7 @@ html{font-family:'Source Sans 3',sans-serif;}
           <span>narendrapulipati6@gmail.com</span>
         </div>
       </div>
+
       <div class="contact-info-item">
         <div class="contact-icon">✉</div>
         <div class="contact-info-text">
@@ -1001,6 +1004,7 @@ html{font-family:'Source Sans 3',sans-serif;}
           <span>krishnals4543@gmail.com</span>
         </div>
       </div>
+
       <div class="contact-info-item">
         <div class="contact-icon">☎</div>
         <div class="contact-info-text">
@@ -1008,6 +1012,7 @@ html{font-family:'Source Sans 3',sans-serif;}
           <span>07877 978134</span>
         </div>
       </div>
+
       <div class="contact-info-item">
         <div class="contact-icon">⚑</div>
         <div class="contact-info-text">
@@ -1015,46 +1020,60 @@ html{font-family:'Source Sans 3',sans-serif;}
           <span>London, United Kingdom</span>
         </div>
       </div>
+
       <div class="contact-info-item">
         <div class="contact-icon">◈</div>
         <div class="contact-info-text">
           <strong>Target Sectors</strong>
-          <span>Performance Agencies · E-Commerce Brands · FinTech · Gambling · Health · AdTech Partners</span>
+          <span>Performance Agencies · E-Commerce · FinTech · Gambling · Health · AdTech</span>
         </div>
       </div>
     </div>
 
+    <!-- RIGHT SIDE (FORM FIXED) -->
     <div class="contact-right">
-      <div class="contact-form">
+      <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+
+        <!-- 🔑 ACCESS KEY -->
+        <input type="hidden" name="access_key" value="86520d3c-28b9-48c0-afab-9c8bebc10a24">
+
+        <!-- OPTIONAL -->
+        <input type="hidden" name="subject" value="New SignalShield Enquiry">
+        <input type="hidden" name="from_name" value="SignalShield Website">
+
         <div class="form-group">
           <label>Full Name</label>
-          <input type="text" placeholder="Your full name">
+          <input type="text" name="name" placeholder="Your full name" required>
         </div>
+
         <div class="form-group">
           <label>Email Address</label>
-          <input type="email" placeholder="your@email.com">
+          <input type="email" name="email" placeholder="your@email.com" required>
         </div>
+
         <div class="form-group">
           <label>Organisation</label>
-          <input type="text" placeholder="Agency or company name">
+          <input type="text" name="organisation" placeholder="Agency or company name" required>
         </div>
+
         <div class="form-group">
           <label>I am a…</label>
-          <select>
+          <select name="role" required>
             <option value="">Select your role</option>
             <option>Performance Marketing Agency Director</option>
             <option>Head of Paid Media / PPC</option>
-            <option>E-Commerce Brand / DTC Business Owner</option>
+            <option>E-Commerce Brand Owner</option>
             <option>FinTech / Gambling / Health Advertiser</option>
-            <option>AdTech Platform / Integration Partner</option>
-            <option>CRM / Salesforce Ecosystem Partner</option>
+            <option>AdTech Platform / Partner</option>
+            <option>CRM / Salesforce Partner</option>
             <option>Investor / Funder</option>
             <option>Other</option>
           </select>
         </div>
+
         <div class="form-group">
           <label>Monthly Ad Spend (£)</label>
-          <select>
+          <select name="budget" required>
             <option value="">Select your monthly budget</option>
             <option>Under £10,000</option>
             <option>£10,000 – £50,000</option>
@@ -1063,12 +1082,19 @@ html{font-family:'Source Sans 3',sans-serif;}
             <option>£500,000+</option>
           </select>
         </div>
+
         <div class="form-group">
           <label>Message</label>
-          <textarea placeholder="Tell us about your interest in SignalShield AI — demo request, pilot programme, partnership, or investment enquiry…"></textarea>
+          <textarea name="message"
+            placeholder="Tell us about your interest in SignalShield AI — demo, pilot, partnership, or investment enquiry…"
+            required></textarea>
         </div>
-        <button class="form-submit" type="button" onclick="this.textContent='Enquiry Sent ✓';this.style.background='linear-gradient(135deg,#0088DD,#005FAA)';">Send Enquiry →</button>
-      </div>
+
+        <button class="form-submit" type="submit">
+          Send Enquiry →
+        </button>
+
+      </form>
     </div>
 
   </div>
